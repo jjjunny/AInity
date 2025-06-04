@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>동아리 모집 게시판</title>
+    <style>
+        body {
+            background: #f5f6fa;
+            font-family: 'Noto Sans KR', Arial, sans-serif;
+            margin: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 16px;
+        }
+        .page-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #00b894;
+            text-align: center;
+            font-weight: bold;
+        }
+        .card-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,184,148,0.09);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            min-height: 180px;
+            transition: transform 0.15s;
+        }
+        .card:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 6px 20px rgba(0,184,148,0.15);
+        }
+        .card-title {
+            font-size: 1.3rem;
+            color: #222;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .card-meta {
+            font-size: 0.95rem;
+            color: #636e72;
+            margin-bottom: 12px;
+        }
+        .card-desc {
+            color: #444;
+            font-size: 1rem;
+            margin-bottom: 18px;
+        }
+        .card-btn {
+            align-self: flex-end;
+            background: #00b894;
+            color: #fff;
+            padding: 7px 22px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+        .card-btn:hover {
+            background: #0984e3;
+        }
+        .add-btn {
+            display: block;
+            margin: 36px auto 0;
+            background: #0984e3;
+            color: #fff;
+            padding: 12px 36px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(9,132,227,0.08);
+            transition: background 0.2s;
+        }
+        .add-btn:hover {
+            background: #00b894;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-title">동아리 모집 게시판</h2>
+        <div class="card-list">
+            <div class="card">
+                <h3 class="card-title">프로그래밍 동아리 신입 모집</h3>
+                <p class="card-meta">작성자: 박민수 | 분야: IT/프로그래밍</p>
+                <p class="card-desc">코딩에 관심 있는 분들을 위한 동아리입니다. 프로젝트와 해커톤도 함께 해요!</p>
+                <a href="#" class="card-btn">자세히 보기</a>
+            </div>
+            <div class="card">
+                <h3 class="card-title">사진 동아리 신입 환영</h3>
+                <p class="card-meta">작성자: 정다은 | 분야: 예술/사진</p>
+                <p class="card-desc">사진 촬영, 전시회 참가 등 다양한 활동을 하는 동아리입니다. 카메라 없어도 환영!</p>
+                <a href="#" class="card-btn">자세히 보기</a>
+            </div>
+            <div class="card">
+                <h3 class="card-title">영화 감상 동아리</h3>
+                <p class="card-meta">작성자: 김지훈 | 분야: 문화/영화</p>
+                <p class="card-desc">함께 영화 보고 감상문을 나누는 동아리입니다. 월 2회 정기 모임!</p>
+                <a href="#" class="card-btn">자세히 보기</a>
+            </div>
+        </div>
+        <a href="#" class="add-btn">+ 동아리 모집글 작성</a>
+    </div>
+</body>
+</html>

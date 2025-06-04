@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>스터디 모집 게시판</title>
+    <style>
+        body {
+            background: #f5f6fa;
+            font-family: 'Noto Sans KR', Arial, sans-serif;
+            margin: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 16px;
+        }
+        .page-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #0984e3;
+            text-align: center;
+            font-weight: bold;
+        }
+        .card-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(9,132,227,0.09);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            min-height: 180px;
+            transition: transform 0.15s;
+        }
+        .card:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 6px 20px rgba(9,132,227,0.15);
+        }
+        .card-title {
+            font-size: 1.3rem;
+            color: #222;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        .card-meta {
+            font-size: 0.95rem;
+            color: #636e72;
+            margin-bottom: 12px;
+        }
+        .card-desc {
+            color: #444;
+            font-size: 1rem;
+            margin-bottom: 18px;
+        }
+        .card-btn {
+            align-self: flex-end;
+            background: #0984e3;
+            color: #fff;
+            padding: 7px 22px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+        .card-btn:hover {
+            background: #00b894;
+        }
+        .add-btn {
+            display: block;
+            margin: 36px auto 0;
+            background: #00b894;
+            color: #fff;
+            padding: 12px 36px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,184,148,0.08);
+            transition: background 0.2s;
+        }
+        .add-btn:hover {
+            background: #0984e3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="page-title">스터디 모집 게시판</h2>
+        <div class="card-list">
+            <div class="card">
+                <h3 class="card-title">파이썬 스터디원 모집</h3>
+                <p class="card-meta">작성자: 홍길동 | 모집인원: 3/5</p>
+                <p class="card-desc">매주 토요일마다 온라인으로 파이썬 알고리즘 스터디를 진행합니다. 초보자 환영!</p>
+                <a href="#" class="card-btn">자세히 보기</a>
+            </div>
+            <div class="card">
+                <h3 class="card-title">웹 개발 스터디</h3>
+                <p class="card-meta">작성자: 김영희 | 모집인원: 2/4</p>
+                <p class="card-desc">HTML, CSS, Django를 함께 공부할 분 구합니다. 매주 수요일 오프라인 모임!</p>
+                <a href="#" class="card-btn">자세히 보기</a>
+            </div>
+            <div class="card">
+                <h3 class="card-title">AI 논문 읽기 스터디</h3>
+                <p class="card-meta">작성자: 이철수 | 모집인원: 5/6</p>
+                <p class="card-desc">최신 인공지능 논문을 함께 읽고 토론하는 스터디입니다. 관심 있는 분 누구나 환영!</p>
+                <a href="#" class="card-btn">자세히 보기</a>
+            </div>
+        </div>
+        <a href="#" class="add-btn">+ 스터디 모집글 작성</a>
+    </div>
+</body>
+</html>

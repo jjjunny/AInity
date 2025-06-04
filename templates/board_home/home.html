@@ -115,8 +115,8 @@
   <header>
     <div class="logo">Ainity</div>
     <nav class="nav-menu">
-      <a href="#">스터디 모집</a>
-      <a href="#">동아리 모집</a>
+      <a href="{% url 'study_list' %}">스터디 모집</a>
+      <a href="{% url 'club_list' %}">동아리 모집</a>
       <a href="{% url 'classchat' %}">클래스 챗</a>
       <a href="{% url 'school_notice' %}">학교 공지 공지사항</a>
     </nav>
@@ -135,6 +135,10 @@
       <img src="https://cdn.news.unn.net/news/photo/202107/512348_313477_157.jpg" alt="정문">
       <img src="https://www.cju.ac.kr/portlet-repositories/fckeditor/images/gh2cdKwZl2M=/1329798170479.jpg" alt="전경">
       <img src="https://www.seenews365.com/news/photo/201705/15474_10184_3626.jpg" alt="도서관">
+      <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzExMDFfMyAg%2FMDAxNjk4ODI2NTk3NzM2.zlPrNwdFW1tJDTCBSH7wHNbzAt4qFJcVD9yxZSedaiUg.gXu3zHc3ayVtpwjPVNeZLM8bJDDEiwpmE9es9lLGVeIg.JPEG.juju5501%2F20231101%25A3%25DF134255.jpg&type=sc960_832" alt="로고포함 도서관정문">
+      <img src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.namu.wiki%2Fi%2FUep3nnxWQHrB9wpNEASmmx0JlNfRcXFFVa8Z89kmHLs9OQYUQOMWTlN8PH1Ly4C4ZLELUiVoHautQIpsZa2Ebg.webp&type=sc960_832" alt="대학원">
+      <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAxODAzMjhfMTEz%2FMDAxNTIyMjIwNDMwMTM4.LdsFa0zdcylpwWS9nX30kkYUzSJMmcr2Qk16TIearh0g.yK42g3tVGfAykosEmllYXtK9-TAosc_UtZftqCLNH5cg.JPEG.cjuonline%2F_S1X7528.jpg&type=sc960_832" alt="잔디밭에 앉아있는 학생들">
+      <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA4MjZfMTE4%2FMDAxNjYxNDc5NDc0NDAz.v-eJpit7JgFizRw7xwlXf6Zx0ZklriIhv62s4IPoAogg.cQtPql-5EwT83Q_Y3p3Ds5BJgZfdaEaCwWVKM_eN4isg.JPEG.ranitj%2F1661478467637.jpg&type=sc960_832" alt="청석역사관">
     </div>
     <button class="banner-arrow left" onclick="prevSlide()">&#10094;</button>
     <button class="banner-arrow right" onclick="nextSlide()">&#10095;</button>

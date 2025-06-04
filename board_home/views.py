@@ -14,6 +14,15 @@ def home(request):
 
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
 
+def study_list(request):
+    # 스터디 모집 게시글 목록 가져오기 (예시)
+    # studies = Study.objects.all()
+    return render(request, 'board_home/study_list.html')  # , {'studies': studies}
+
+def club_list(request):
+    # 동아리 모집 게시글 목록 가져오기 (예시)
+    # clubs = Club.objects.all()
+    return render(request, 'board_home/club_list.html')  # , {'clubs': clubs}
 def login_signup_view(request):
     login_form = CustomAuthenticationForm()
     signup_form = CustomUserCreationForm()

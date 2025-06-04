@@ -6,6 +6,8 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('account/', views.login_signup_view, name='login_signup'),
     path('school_notice/', views.school_notice_view, name='school_notice'),
+    path('study/', views.study_list, name='study_list'),
+    path('club/', views.club_list, name='club_list'),
     path('classchat/', views.classchat, name='classchat'),
     path('classchat/room/<str:room_name>/', views.room, name='room'),
     path('logout/', LogoutView.as_view(next_page='home'), name='logout'),
