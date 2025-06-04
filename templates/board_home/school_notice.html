@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>학교 공지사항</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .auth-buttons a {
+      margin-left: 10px;
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .banner {
+      position: relative;
+      overflow: hidden;
+      height: 200px;
+      background-color: #000;
+    }
+
+    .banner-images {
+      display: flex;
+      transition: transform 1s ease-in-out;
+      height: 100%;
+    }
+
+    .banner-images img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .banner-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.5);
+      border: none;
+      cursor: pointer;
+      z-index: 10;
+      padding: 10px;
+    }
+
+    .banner-arrow.left {
+      left: 10px;
+    }
+
+    .banner-arrow.right {
+      right: 10px;
+    }
+
+    .notices {
+      padding: 40px 30px;
+    }
+
+    .notices h2 {
+      margin-bottom: 15px;
+    }
+
+    .notice-controls {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .notice-controls form {
+      display: flex;
+      gap: 10px;
+    }
+
+    select, input[type="text"] {
+      padding: 5px;
+      font-size: 14px;
+    }
+
+    .notice-item {
+      margin-bottom: 12px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .notice-item a {
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      color: #1a237e;
+    }
+
+    .notice-meta {
+      font-size: 13px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo"><a href="{% url 'home' %}">Ainity</a></div>
+    <nav class="nav-menu">
+      <a href="#">스터디 모집</a>
+      <a href="#">동아리 모집</a>
+      <a href="#">클래스 챗</a>
+      <a href="{% url 'school_notice' %}">학교 공지 공지사항</a>
+    </nav>
+    <div class="auth-buttons">
+      <a href="{% url 'login_signup' %}">로그인</a>
+    </div>
+  </header>
+
+  <section class="banner">
+    <div class="banner-images" id="slider">
+      <img src="https://cdn.news.unn.net/news/photo/202107/512348_313477_157.jpg" alt="정문">
+      <img src="https://www.cju.ac.kr/portlet-repositories/fckeditor/images/gh2cdKwZl2M=/1329798170479.jpg" alt="전경">
+      <img src="https://www.seenews365.com/news/photo/201705/15474_10184_3626.jpg" alt="도서관">
+    </div>
+    <button class="banner-arrow left" onclick="prevSlide()">&#10094;</button>
+    <button class="banner-arrow right" onclick="nextSlide()">&#10095;</button>
+  </section>
+
+  <section class="notices">
+    <h2>최근 학교 공지사항</h2>
+
+    <div class="notice-controls">
+      <form method="get">
+        <select name="category">
+          <option value="">전체</option>
+          <option value="학사">학사</option>
+          <option value="장학ㆍ대출">장학ㆍ대출</option>
+          <option value="입학">입학</option>
+          <option value="채용">채용</option>
+          <option value="입찰">입찰</option>
+          <option value="일반">일반</option>
+        </select>
+        <input type="text" name="search" placeholder="제목 검색" />
+        <button type="submit">검색</button>
+      </form>
+    </div>
+
+    {% for notice in notices %}
+      <div class="notice-item">
+        <a href="{{ notice.link }}" target="_blank">{{ notice.title }}</a>
+        <div class="notice-meta">[{{ notice.category }}] {{ notice.date }}</div>
+      </div>
+    {% empty %}
+      <p>최근 공지사항이 없습니다.</p>
+    {% endfor %}
+  </section>
+
+  <script>
+    const slider = document.getElementById("slider");
+    const slides = slider.children;
+    const totalSlides = slides.length;
+    let currentIndex = 0;
+
+    function updateSlide() {
+      slider.style.transform = `translateX(-${100 * currentIndex}%)`;
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateSlide();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateSlide();
+    }
+
+    setInterval(() => {
+      nextSlide();
+    }, 10000);
+  </script>
+
+</body>
+</html>

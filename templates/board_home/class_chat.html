@@ -1,0 +1,174 @@
+from pathlib import Path
+
+html_code = """
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>클래스 챗</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+    }
+
+    header {
+      background-color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 30px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo a {
+      text-decoration: none;
+      color: black;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-menu a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    .auth-buttons a {
+      margin-left: 10px;
+      text-decoration: none;
+      color: #007bff;
+    }
+
+    .chat-container {
+      display: flex;
+      padding: 20px;
+    }
+
+    .category-list {
+      width: 200px;
+      background: #fff;
+      border: 1px solid #ccc;
+      margin-right: 20px;
+      border-radius: 4px;
+    }
+
+    .category-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .category-list li {
+      padding: 15px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+    }
+
+    .category-list li:hover,
+    .category-list li.active {
+      background: #e3f2fd;
+    }
+
+    .chat-box {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .chat-input {
+      display: flex;
+      padding: 10px;
+      border-top: 1px solid #ccc;
+    }
+
+    .chat-input input {
+      flex: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .chat-input button {
+      margin-left: 10px;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .message {
+      margin-bottom: 10px;
+    }
+
+    .message strong {
+      color: #1a237e;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo"><a href="{% url 'home' %}">Ainity</a></div>
+  <nav class="nav-menu">
+    <a href="#">스터디 모집</a>
+    <a href="#">동아리 모집</a>
+    <a href="{% url 'class_chat' %}">클래스 챗</a>
+    <a href="{% url 'school_notice' %}">학교 공지</a>
+  </nav>
+  <div class="auth-buttons">
+    <a href="{% url 'login_signup' %}">로그인</a>
+  </div>
+</header>
+
+<div class="chat-container">
+  <div class="category-list">
+    <ul>
+      <li class="active">🧪 과제</li>
+      <li>💬 질문</li>
+      <li>📌 공지</li>
+      <li>🧑‍🏫 교수답변</li>
+      <li>📚 참고자료</li>
+    </ul>
+  </div>
+
+  <div class="chat-box">
+    <div class="chat-messages" id="chat-messages">
+      <div class="message"><strong>홍길동:</strong> 교수님, 과제 2번 질문 있습니다.</div>
+      <div class="message"><strong>이교수:</strong> 2번은 교재 45쪽 예시를 참고하세요.</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="메시지를 입력하세요..." />
+      <button>전송</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
+"""
+
+path = Path("/mnt/data/class_chat.html")
+path.write_text(html_code, encoding="utf-8")
+path.name
