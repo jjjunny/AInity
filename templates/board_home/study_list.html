@@ -9,9 +9,22 @@
             font-family: 'Noto Sans KR', Arial, sans-serif;
             margin: 0;
         }
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #0984e3;
+            text-decoration: none;
+        }
+        .logo:hover {
+            text-decoration: underline;
+            color: #00b894;
+        }
         .container {
             max-width: 900px;
-            margin: 40px auto;
+            margin: 80px auto 40px; /* 상단 공간 확보 */
             padding: 0 16px;
         }
         .page-title {
@@ -88,6 +101,10 @@
     </style>
 </head>
 <body>
+
+    <!-- 왼쪽 상단 로고 링크 -->
+    <a href="home_html" class="logo">AINITY</a>
+
     <div class="container">
         <h2 class="page-title">스터디 모집 게시판</h2>
         <div class="card-list">
