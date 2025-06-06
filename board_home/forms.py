@@ -1,7 +1,8 @@
 # board_home/forms.py
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from .models import CustomUser
+from .models import CustomUser, StudyPost
+
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
@@ -13,3 +14,8 @@ class CustomAuthenticationForm(AuthenticationForm):
     class Meta:
         model = CustomUser
         fields = ('username', 'password')
+
+class StudyPostForm(forms.ModelForm):
+    class Meta:
+        model = StudyPost
+        fields = ['title', 'writer', 'participants', 'description']

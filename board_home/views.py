@@ -3,9 +3,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from .forms import CustomUserCreationForm, CustomAuthenticationForm
+from .forms import CustomUserCreationForm, CustomAuthenticationForm, StudyPostForm
 from .notice_crawler import crawl_and_store_notices
-from .models import Notice
+from .models import Notice, StudyPost
 
 
 def home(request):
@@ -73,3 +73,21 @@ def classchat(request):
 
 def room(request, room_name):
     return render(request, 'board_home/room.html', {'room_name': room_name})  # ✅ 경로 수정
+
+def study_list(request):
+    posts = StudyPost.objects.order_by('-created_at')
+    return render(request, 'studyboard/study_list.html', {'posts': posts})
+
+def study_detail(request, pk, get_object_or_404=None):
+    post = get_object_or_404(StudyPost, pk=pk)
+    return render(request, 'studyboard/study_form.html', {'post': post})
+
+def study_create(request):
+    if request.method == 'POST':
+        form = StudyPostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('study_list')
+    else:
+        form = StudyPostForm()
+    return render(request, 'studyboard/study_form.html', {'form': form})
