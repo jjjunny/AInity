@@ -10,7 +10,9 @@
       background-color: black;
       color: white;
       min-height: 100vh;
+      font-family: 'Arial', sans-serif;
     }
+
     .logo {
       position: absolute;
       top: 20px;
@@ -20,29 +22,35 @@
       color: white;
       cursor: pointer;
     }
+
     .logo:hover {
       text-decoration: underline;
     }
+
     .welcome-message {
       text-align: center;
       margin-top: 80px;
       margin-bottom: 40px;
     }
+
     .welcome-message h1 {
       font-size: 2.1rem;
       font-weight: bold;
       margin-bottom: 12px;
     }
+
     .welcome-message p {
       font-size: 1.1rem;
       color: #cccccc;
     }
+
     .auth-container {
       display: flex;
       justify-content: center;
       align-items: flex-start;
       min-height: 400px;
     }
+
     .right {
       background-color: white;
       color: black;
@@ -50,27 +58,57 @@
       padding: 40px;
       min-width: 340px;
       min-height: 380px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.13);
     }
+
     .form-toggle {
-      text-align: center;
+      display: flex;
+      justify-content: center;
       margin-bottom: 20px;
     }
+
     .form-toggle button {
-      margin: 0 5px;
+      flex: 1;
+      border-radius: 0;
+      border: 1px solid #0d6efd;
+      transition: background-color 0.3s, color 0.3s;
     }
+
+    .form-toggle .active {
+      background-color: #0d6efd;
+      color: white;
+    }
+
+    .form-toggle button:hover {
+      background-color: #0d6efd;
+      color: white;
+    }
+
+    .btn-primary:hover,
+    .btn-success:hover {
+      background-color: #0d6efd !important;
+      border-color: #0a58ca !important;
+      color: white !important;
+    }
+
     .sns-login img {
       width: 40px;
       margin: 5px;
     }
+
     @media (max-width: 600px) {
-      .welcome-message { margin-top: 40px; }
-      .right { padding: 24px 10px; min-width: unset; }
+      .welcome-message {
+        margin-top: 40px;
+      }
+
+      .right {
+        padding: 24px 10px;
+        min-width: unset;
+      }
     }
   </style>
 </head>
 <body>
-<!-- AINITY 텍스트를 클릭하면 홈 화면으로 이동 -->
   <a href="{% url 'home' %}" class="logo">AINITY</a>
 
   <div class="welcome-message">
@@ -81,9 +119,10 @@
   <div class="auth-container">
     <div class="right">
       <div class="form-toggle">
-        <button class="btn btn-outline-primary" onclick="showLogin()">로그인</button>
-        <button class="btn btn-outline-secondary" onclick="showSignup()">회원가입</button>
+        <button id="loginTab" class="btn btn-outline-primary active" onclick="showLogin()">로그인</button>
+        <button id="signupTab" class="btn btn-outline-primary" onclick="showSignup()">회원가입</button>
       </div>
+
       <div id="login-form">
         <h2>로그인</h2>
         <form method="post" action="{% url 'login_signup' %}">
@@ -92,6 +131,7 @@
           <button type="submit" name="login_submit" class="btn btn-primary w-100">로그인하기</button>
         </form>
       </div>
+
       <div id="signup-form" style="display:none;">
         <h2>회원가입</h2>
         <form method="post" action="{% url 'login_signup' %}">
@@ -100,6 +140,7 @@
           <button type="submit" name="signup_submit" class="btn btn-success w-100">회원가입</button>
         </form>
       </div>
+
       <div class="sns-login mt-4 text-center">
         <p>SNS 계정으로 간편하게 시작하기</p>
         <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="google">
@@ -115,10 +156,15 @@
     function showLogin() {
       document.getElementById('login-form').style.display = 'block';
       document.getElementById('signup-form').style.display = 'none';
+      document.getElementById('loginTab').classList.add('active');
+      document.getElementById('signupTab').classList.remove('active');
     }
+
     function showSignup() {
       document.getElementById('login-form').style.display = 'none';
       document.getElementById('signup-form').style.display = 'block';
+      document.getElementById('signupTab').classList.add('active');
+      document.getElementById('loginTab').classList.remove('active');
     }
   </script>
 </body>
