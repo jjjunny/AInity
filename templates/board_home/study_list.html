@@ -85,7 +85,7 @@
         .add-btn {
             display: block;
             margin: 36px auto 0;
-            background: #00b894;
+            background: #0984e3;
             color: #fff;
             padding: 12px 36px;
             border-radius: 30px;
@@ -96,29 +96,37 @@
             transition: background 0.2s;
         }
         .add-btn:hover {
-            background: #0984e3;
+            background: #00b894;
         }
     </style>
 </head>
 <body>
   <a href="{% url 'home' %}" class="logo">AINITY</a>
+<!-- 왼쪽 상단 로고 링크 -->
 
-  <div class="container">
-    <h2 class="page-title">스터디 모집 게시판</h2>
-    <div class="card-list">
-      {% for post in posts %}
-      <div class="card">
-        <h3 class="card-title">{{ post.title }}</h3>
-        <p class="card-meta">작성자: {{ post.writer }} | 모집인원: {{ post.participants }}</p>
-        <p class="card-desc">{{ post.description|truncatechars:100 }}</p>
-        <a href="{% url 'study_detail' post.pk %}" class="card-btn">자세히 보기</a>
-      </div>
-      {% empty %}
-      <p>등록된 스터디가 없습니다.</p>
-      {% endfor %}
+    <div class="container">
+        <h2 class="page-title">스터디 모집 게시판</h2>
+        <div class="card-list">
+            <div class="card">
+                <h3 class="card-title">파이썬 스터디원 모집</h3>
+                <p class="card-meta">작성자: 홍길동 | 모집인원: 3/5</p>
+                <p class="card-desc">매주 토요일마다 온라인으로 파이썬 알고리즘 스터디를 진행합니다. 초보자 환영!</p>
+                <a href="#" class="card-btn">자세히 보기</a>
+            </div>
+            <div class="card">
+                <h3 class="card-title">웹 개발 스터디</h3>
+                <p class="card-meta">작성자: 김영희 | 모집인원: 2/4</p>
+                <p class="card-desc">HTML, CSS, Django를 함께 공부할 분 구합니다. 매주 수요일 오프라인 모임!</p>
+                <a href="#" class="card-btn">자세히 보기</a>
+            </div>
+            <div class="card">
+                <h3 class="card-title">AI 논문 읽기 스터디</h3>
+                <p class="card-meta">작성자: 이철수 | 모집인원: 5/6</p>
+                <p class="card-desc">최신 인공지능 논문을 함께 읽고 토론하는 스터디입니다. 관심 있는 분 누구나 환영!</p>
+                <a href="#" class="card-btn">자세히 보기</a>
+            </div>
+        </div>
+        <a href="{% url 'study_create' %}" class="add-btn">+ 스터디 모집글 작성</a>
     </div>
-    <a href="{% url 'study_create' %}" class="add-btn">+ 스터디 모집글 작성</a>
-  </div>
 </body>
-
 </html>

@@ -3,14 +3,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
-from .forms import CustomUserCreationForm, CustomAuthenticationForm, StudyPostForm
+from .forms import CustomUserCreationForm, CustomAuthenticationForm
 from .notice_crawler import crawl_and_store_notices
-from .models import Notice, StudyPost
+from .models import Notice
 
 
 def home(request):
     return render(request, 'board_home/home.html')
-
+def create_post(request):
+    return render(request, 'board_home/club_create.html')
 
 from .forms import CustomUserCreationForm, CustomAuthenticationForm
 
@@ -18,6 +19,8 @@ def study_list(request):
     # 스터디 모집 게시글 목록 가져오기 (예시)
     # studies = Study.objects.all()
     return render(request, 'board_home/study_list.html')  # , {'studies': studies}
+def study_create(request):
+    return render(request, 'board_home/study_create.html')
 
 def club_list(request):
     # 동아리 모집 게시글 목록 가져오기 (예시)
@@ -74,20 +77,3 @@ def classchat(request):
 def room(request, room_name):
     return render(request, 'board_home/room.html', {'room_name': room_name})  # ✅ 경로 수정
 
-def study_list(request):
-    posts = StudyPost.objects.order_by('-created_at')
-    return render(request, 'studyboard/study_list.html', {'posts': posts})
-
-def study_detail(request, pk, get_object_or_404=None):
-    post = get_object_or_404(StudyPost, pk=pk)
-    return render(request, 'studyboard/study_form.html', {'post': post})
-
-def study_create(request):
-    if request.method == 'POST':
-        form = StudyPostForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('study_list')
-    else:
-        form = StudyPostForm()
-    return render(request, 'studyboard/study_form.html', {'form': form})
